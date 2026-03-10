@@ -196,24 +196,31 @@ echo ""
 draw_status 6 7 "Configurando banco de dados"
 
 mysql -uroot -pvertrigo mkradius 2>/dev/null << 'SQL'
-CREATE TABLE IF NOT EXISTS `pagorapay_boletos` (
-  `id`              INT AUTO_INCREMENT PRIMARY KEY,
-  `titulo_id`       INT NOT NULL,
-  `carne_id`        INT DEFAULT NULL,
-  `id_externo`      VARCHAR(100) DEFAULT NULL,
-  `status`          VARCHAR(30) DEFAULT 'pendente',
-  `valor`           DECIMAL(10,2) DEFAULT NULL,
-  `vencimento`      DATE DEFAULT NULL,
-  `linha_digitavel` VARCHAR(200) DEFAULT NULL,
-  `pix_copia_cola`  TEXT DEFAULT NULL,
-  `pix_qrcode`      MEDIUMTEXT DEFAULT NULL,
-  `boleto_url`      VARCHAR(500) DEFAULT NULL,
-  `nosso_numero`    VARCHAR(100) DEFAULT NULL,
-  `created_at`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `updated_at`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_titulo (`titulo_id`),
-  INDEX idx_carne  (`carne_id`),
-  INDEX idx_status (`status`)
+CREATE TABLE IF NOT EXISTS pagorapay_boletos (
+    id              INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id      VARCHAR(20),
+    cliente_nome    VARCHAR(150),
+    carne_id        VARCHAR(50),
+    titulo_id       INT(11),
+    id_externo      VARCHAR(80),
+    boleto_id       VARCHAR(100),
+    boleto_url      TEXT,
+    link_pagamento  TEXT,
+    pix_copia_cola  TEXT,
+    pix_qrcode      TEXT,
+    linha_digitavel VARCHAR(100),
+    codigo_barras   VARCHAR(100),
+    valor           DECIMAL(10,2),
+    valor_liquido   DECIMAL(10,2),
+    vencimento      DATE,
+    status          VARCHAR(20) DEFAULT 'pendente',
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_cliente    (cliente_id),
+    INDEX idx_id_externo (id_externo),
+    INDEX idx_carne      (carne_id),
+    INDEX idx_titulo     (titulo_id),
+    INDEX idx_status     (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 SQL
 step_ok "Tabela pagorapay_boletos OK"
