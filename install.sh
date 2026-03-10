@@ -6,8 +6,8 @@ set -euo pipefail
 
 GITHUB_TOKEN="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"
 GITHUB_RAW="https://raw.githubusercontent.com/PagoraPay/mkauth-addon/main"
-GITHUB_PKG="https://github.com/PagoraPay/mkauth-addon/raw/main/pagorapay_files_v1.0.0.tar.gz"
-PP_VERSION="1.0.0"
+GITHUB_PKG="https://github.com/PagoraPay/mkauth-addon/raw/main/pagorapay_files_v1.0.1.tar.gz"
+PP_VERSION="1.0.1"
 MK_DIR="/opt/mk-auth"
 ADDON_DIR="$MK_DIR/admin/addons/pagorapay"
 BACKUP_DIR="/opt/pagorapay_backup_$(date +%Y%m%d_%H%M%S)"
