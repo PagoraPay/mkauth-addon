@@ -50,17 +50,17 @@ draw_header() {
     echo "  |                   |_|   |_| \_\|_| \_|              |"
     echo "  |                                                      |"
     echo "  |        Addon para MKAuth --- Boleto & PIX            |"
-    echo "  ║                                                      ║"
+    echo "  |                                                      |"
 
 
 
 
 
-    echo "  ║        ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ║"
-    echo "  ║                                                      ║"
-    echo "  ║          Addon para MKAuth — Boleto & PIX            ║"
-    echo -e "  ║              ${YELLOW}Versão $PP_VERSION${BLUE}                              ║"
-    echo "  ╚══════════════════════════════════════════════════════╝"
+    echo "  |                                                      |"
+    echo "  |                                                      |"
+    echo "  |        Addon para MKAuth --- Boleto & PIX            |"
+    echo -e "  |              Versao $PP_VERSION                              |"
+    echo "  +======================================================+"
     echo -e "${NC}"
     echo ""
 }
@@ -75,19 +75,19 @@ draw_footer_success() {
     echo ""
     echo -e "${BOLD}${GREEN}"
 
-    echo "  ║                                                      ║"
-    echo "  ║        ✔  PagoraPay instalado com sucesso!          ║"
-    echo "  ║                                                      ║"
-    echo "  ╠══════════════════════════════════════════════════════╣"
-    echo -e "  ║  ${NC}${BOLD}Próximos passos:${GREEN}                                    ║"
-    echo "  ║                                                      ║"
-    echo "  ║  1. Acesse MKAuth → menu PagoraPay                   ║"
-    echo "  ║  2. Configure sua API key                            ║"
-    echo "  ║  3. Teste um boleto pela Central do Assinante        ║"
-    echo "  ║                                                      ║"
-    echo -e "  ║  ${NC}Log: /var/log/pagorapay_install.log${GREEN}               ║"
-    echo "  ║                                                      ║"
-    echo "  ╚══════════════════════════════════════════════════════╝"
+    echo "  |                                                      |"
+    echo "  |      [OK] PagoraPay instalado com sucesso!          |"
+    echo "  |                                                      |"
+    echo "  +======================================================+"
+    echo -e "  | Proximos passos:                                   |"
+    echo "  |                                                      |"
+    echo "  |  1. Acesse MKAuth -> menu PagoraPay                  |"
+    echo "  |  2. Configure sua API key                            |"
+    echo "  |  3. Teste um boleto pela Central do Assinante        |"
+    echo "  |                                                      |"
+    echo -e "  | Log: /var/log/pagorapay_install.log               |"
+    echo "  |                                                      |"
+    echo "  +======================================================+"
     echo -e "${NC}"
 }
 
@@ -240,8 +240,8 @@ if [[ ! -f "$CONFIG" ]] || [[ ! -s "$CONFIG" ]]; then
     NUMCONTA=$(mysql -uroot -pvertrigo mkradius -sNe "SELECT numconta FROM sis_servidores LIMIT 1" 2>/dev/null || echo "1")
     echo ""
 
-    echo -e "  ${BOLD}║     Configure sua API PagoraPay      ║${NC}"
-    echo -e "  ${BOLD}╚══════════════════════════════════════╝${NC}"
+    echo -e "  |     Configure sua API PagoraPay      |"
+    echo -e "  +======================================+"
     echo ""
     read -r -p "  API Key (pp_...): " PP_API_KEY
     read -r -p "  Ambiente [sandbox/producao]: " PP_ENV
